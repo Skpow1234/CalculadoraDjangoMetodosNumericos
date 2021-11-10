@@ -1,0 +1,50 @@
+{% extends 'inicio/inicio.html' %}
+{% block contenido %}
+    <div class="contenedor-cartas">
+        <div class="contenedor-cartas__carta">
+            <a href="{% url 'rectangulos' %}">
+                <span><i class=""></i></span>
+                <h6>Rectangulos</h6>
+                <div class="contenedor-cartas__carta__descripcion">
+                    <p>Calcula la integral definida entre un intervalo usando el metodo de rectangulos</p>
+                </div>
+            </a>
+        </div>
+        <div class="contenedor-cartas__carta">
+            <a href="{% url 'trapecios' %}">
+                <span><i class=""></i></span>
+                <h6>Trapecios</h6>
+                <div class="contenedor-cartas__carta__descripcion">
+                    <p>Calcula la integral definida entre un intervalo usando el metodo de trapecios</p>
+                </div>
+            </a>
+        </div>
+        <div class="contenedor-cartas__carta">
+            <a href="{% url 'simpson1_3' %}">
+                <span><i class=""></i></span>
+                <h6>Simpson 1/3</h6>
+                <div class="contenedor-cartas__carta__descripcion">
+                    <p>Calcula la integral definida entre un intervalo usando el metodo de Simpson 1/3</p>
+                </div>
+            </a>
+        </div>
+        <div class="contenedor-cartas__carta">
+            <a href="{% url 'simpson3_8' %}">
+                <span><i class=""></i></span>
+                <h6>Simpson 3/8</h6>
+                <div class="contenedor-cartas__carta__descripcion">
+                    <p>Calcula la integral definida entre un intervalo usando el metodo de Simpson 3/8</p>
+                </div>
+            </a>
+        </div>
+        <div class="contenedor-cartas__carta">
+            <a href="{% url 'montecarlo' %}">
+                <span><i class=""></i></span>
+                <h6>Montecarlo</h6>
+                <div class="contenedor-cartas__carta__descripcion">
+                    <p>Calcula la integral definida entre un intervalo usando el metodo de Montecarlo</p>
+                </div>
+            </a>
+        </div>
+    </div>
+{% endblock %}

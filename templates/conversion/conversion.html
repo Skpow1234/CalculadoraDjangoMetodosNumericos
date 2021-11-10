@@ -1,0 +1,51 @@
+{% extends 'inicio/inicio.html' %}
+{% load static %}
+{% block contenido %}
+    <div class="contenedor-cartas">
+        <div class="contenedor-cartas__carta">
+            <a href="{% url 'conversion_binario' %}">
+                <span><i class=""></i></span>
+                <h6>Sistema Binario</h6>
+                <div class="contenedor-cartas__carta__descripcion">
+                    <p>Convierte del sistema binario a otros sistemas numericos</p>
+                </div>
+            </a>
+        </div>
+        <div class="contenedor-cartas__carta">
+            <a href="{% url 'conversion_octal' %}">
+                <span><i class=""></i></span>
+                <h6>Sistema Octal</h6>
+                <div class="contenedor-cartas__carta__descripcion">
+                    <p>Convierte del sistema octal a otros sistemas numericos</p>
+                </div>
+            </a>
+        </div>
+        <div class="contenedor-cartas__carta">
+            <a href="{% url 'conversion_decimal' %}">
+                <span><i class=""></i></span>
+                <h6>Sistema Decimal</h6>
+                <div class="contenedor-cartas__carta__descripcion">
+                    <p>Convierte del sistema decimal a otros sistemas numericos</p>
+                </div>
+            </a>
+        </div>
+        <div class="contenedor-cartas__carta">
+            <a href="{% url 'conversion_hexadecimal' %}">
+                <span><i class=""></i></span>
+                <h6>Sistema Hexadecimal</h6>
+                <div class="contenedor-cartas__carta__descripcion">
+                    <p>Convierte del sistema hexadecimal a otros sistemas numericos</p>
+                </div>
+            </a>
+        </div>
+        <div class="contenedor-cartas__carta">
+            <a href="{% url 'conversion_ieee754' %}">
+                <span><i class=""></i></span>
+                <h6>Estandar IEEE754</h6>
+                <div class="contenedor-cartas__carta__descripcion">
+                    <p>Convierte al estandar IEEE754</p>
+                </div>
+            </a>
+        </div>
+    </div>
+{% endblock %}

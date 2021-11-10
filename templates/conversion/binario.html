@@ -1,0 +1,33 @@
+{% extends 'inicio/inicio.html' %}
+{% load static %}
+{% block contenido %}
+    <form method="POST" action="{% url 'convertir_binario' %}" id="form-evaluador">
+        {% csrf_token %}
+        <div class="input-tt">
+            <label for="entrada-numero" name="entrada-numero">Numero:</label>
+            <input type="text" id="entrada-numero" name="entrada-numero">
+        </div>
+        <div class="botonera-form">
+            <input class="boton-especial" type="reset" value="Borrar">
+            <input class="boton-especial" type="submit" value="Calcular">
+        </div>
+    </form>
+    {% if existeResultado %}
+        <div class="contenedor-resultado">
+            <h5>Resultado</h5>
+            <div class="contenedor-resultados-multiples">
+                {% for llave, valor in resultado.items %}
+                    <div class="resultados-multiples__elemento ct">
+                        <h6>{{llave}}</h6>
+                        <div class="resultados-multiples__elemento__valor">
+                            <input class="" type="text" value={{valor}}>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
+{% block informacion-teoria %}
+    {% lorem 10 b random %}
+{% endblock %}

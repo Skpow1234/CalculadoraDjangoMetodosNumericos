@@ -1,0 +1,57 @@
+{% extends 'inicio/inicio.html' %}
+{% load static %}
+{% block contenido %}
+    <form method="POST" action="{% url 'convertir_ieee754' %}" id="form-evaluador">
+        {% csrf_token %}
+        <div class="input-tt">
+            <label for="entrada-numero" name="entrada-numero">Numero:</label>
+            <input type="text" id="entrada-numero" name="entrada-numero" value="{{numero}}">
+        </div>
+        <div class="botonera-form">
+            <input class="boton-especial" type="reset" value="Borrar">
+            <input class="boton-especial" type="submit" value="Calcular">
+        </div>
+    </form>
+    {% if existeResultado %}
+        <div class="contenedor-resultado">
+            <h5>Resultado</h5>
+            <h5>32 Bits</h5>
+            <div class="contenedor-resultados-multiples">
+                <form method="POST" action="{% url 'convertir_ieee754_32bits' %}" id="form-evaluador">
+                {% csrf_token %}
+                    {% for llave, valor in resultado32Bits.items %}
+                        <div class="resultados-multiples__elemento ct">
+                            <h6>{{llave}}</h6>
+                            <div class="resultados-multiples__elemento__valor">
+                                <input type="text" name="{{llave}}32Bits" value="{{valor}}">
+                            </div>
+                        </div>
+                    {% endfor %}
+                    <div class="botonera-form" style="justify-content: right;">
+                        <input class="boton-especial" type="submit" value="Calcular">
+                    </div>
+                </form>
+            </div>
+            <h5>64 Bits</h5>
+            <div class="contenedor-resultados-multiples">
+                <form method="POST" action="{% url 'convertir_ieee754_64bits' %}" id="form-evaluador">
+                    {% csrf_token %}
+                    {% for llave, valor in resultado64Bits.items %}
+                        <div class="resultados-multiples__elemento ct">
+                            <h6>{{llave}}</h6>
+                            <div class="resultados-multiples__elemento__valor">
+                                <input type="text" name="{{llave}}64Bits" value="{{valor}}">
+                            </div>
+                        </div>
+                    {% endfor %}
+                    <div class="botonera-form" style="justify-content: right;">
+                        <input class="boton-especial" type="submit" value="Calcular">
+                    </div>
+                </form>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
+{% block informacion-teoria %}
+    {% lorem 10 b random %}
+{% endblock %}

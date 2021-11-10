@@ -1,0 +1,51 @@
+{% extends 'inicio/inicio.html' %}
+{% load static %}
+{% block contenido %}
+    <div class="contenedor-cartas">
+        <div class="contenedor-cartas__carta">
+            <a href="{% url 'biseccion' %}">
+                <span><i class=""></i></span>
+                <h6>Biseccion</h6>
+                <div class="contenedor-cartas__carta__descripcion">
+                    <p>Encuentra las raices de una funcion mediante Biseccion</p>
+                </div>
+            </a>
+        </div>
+        <div class="contenedor-cartas__carta">
+            <a href="{% url 'falsa_posicion' %}">
+                <span><i class=""></i></span>
+                <h6>Falsa Posicion</h6>
+                <div class="contenedor-cartas__carta__descripcion">
+                    <p>Encuentra las raices de una funcion mediante Falsa Posicion</p>
+                </div>
+            </a>
+        </div>
+        <div class="contenedor-cartas__carta">
+            <a href="{% url 'newton_raphson' %}">
+                <span><i class=""></i></span>
+                <h6>Newton</h6>
+                <div class="contenedor-cartas__carta__descripcion">
+                    <p>Encuentra las raices de una funcion mediante Newton Raphson</p>
+                </div>
+            </a>
+        </div>
+        <div class="contenedor-cartas__carta">
+            <a href="{% url 'secante' %}">
+                <span><i class=""></i></span>
+                <h6>Secante</h6>
+                <div class="contenedor-cartas__carta__descripcion">
+                    <p>Encuentra las raices de una funcion mediante Secante</p>
+                </div>
+            </a>
+        </div>
+        <div class="contenedor-cartas__carta">
+            <a href="{% url 'polinomio' %}">
+                <span><i class=""></i></span>
+                <h6>Polinomio</h6>
+                <div class="contenedor-cartas__carta__descripcion">
+                    <p>Encuentra las raices de un polinomio</p>
+                </div>
+            </a>
+        </div>
+    </div>
+{% endblock %}

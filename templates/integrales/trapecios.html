@@ -1,0 +1,52 @@
+{% extends 'inicio/inicio.html' %}
+{% load static %}
+{% block contenido %}
+    <form method="POST" action="{% url 'calcular_integral_numerica_trapecios' %}" id="form-evaluador">
+        {% csrf_token %}
+        <div class="input-tt">
+            <label for="entrada-funcion" name="entrada-funcion">Funcion:</label>
+            <input type="text" id="entrada-funcion" name="entrada-funcion" value={{funcion}}>
+        </div>
+        <div class="input-ct">
+            <label for="entrada-extremo-izquierdo" name="entrada-extremo-izquierdo">Extremo izquierdo:</label>
+            <input type="text" id="entrada-extremo-izquierdo" name="entrada-extremo-izquierdo" value={{extremoIzquierdo}}>
+        </div>
+        <div class="input-ct">
+            <label for="entrada-extremo-derecho" name="entrada-extremo-derecho">Extremo derecho:</label>
+            <input type="text" id="entrada-extremo-derecho" name="entrada-extremo-derecho" value={{extremoDerecho}}>
+        </div>
+        <div class="input-ct">
+            <label for="entrada-cantidad-divisiones" name="entrada-cantidad-divisiones">Cantidad divisiones:</label>
+            <input type="text" id="entrada-cantidad-divisiones" name="entrada-cantidad-divisiones" value={{cantidadDivisiones}}>
+        </div>
+        <div class="botonera-form">
+            <input class="boton-especial" type="reset" value="Borrar">
+            <input class="boton-especial" type="submit" value="Calcular">
+        </div>
+    </form>
+    {% if resultado %}
+        <div class="contenedor-resultado">
+            <h5>Resultado</h5>
+            <div class="contenedor-resultados-multiples">
+                <div class="resultados-multiples__elemento md">
+                    <h6>Area</h6>
+                    <div class="resultados-multiples__elemento__valor">
+                        <input class="" type="text" value={{resultado.0}}>
+                    </div>
+                </div>
+                <div class="resultados-multiples__elemento md">
+                    <h6>Error</h6>
+                    <div class="resultados-multiples__elemento__valor">
+                        <input class="" type="text" value={{resultado.1}}>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
+{% block informacion-grafico %}
+    <img src="{% static '\img\grafico.png' %}">
+{% endblock %}
+{% block informacion-teoria %}
+    {% lorem 10 b random %}
+{% endblock %}

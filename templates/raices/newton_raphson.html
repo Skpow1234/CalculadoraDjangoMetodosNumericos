@@ -1,0 +1,66 @@
+{% extends 'inicio/inicio.html' %}
+{% load static %}
+{% block contenido %}
+    <form method="POST" action="{% url 'calcular_newton_raphson' %}" id="form-evaluador">
+        {% csrf_token %}
+        <div class="input-tt">
+            <label for="entrada-funcion" name="entrada-funcion">Funcion:</label>
+            <input type="text" id="entrada-funcion" name="entrada-funcion" value="{{funcion}}">
+        </div>
+        <div class="input-md">
+            <label for="entrada-punto-inicial" name="entrada-punto-inicial">Punto inicial:</label>
+            <input type="text" id="entrada-punto-inicial" name="entrada-punto-inicial" value="{{puntoInicial}}">
+        </div>
+        <div class="input-md">
+            <label for="entrada-error-tolerado" name="entrada-error-tolerado">Error tolerado:</label>
+            <input type="text" id="entrada-error-tolerado" name="entrada-error-tolerado" value="{{errorTolerado}}">
+        </div>
+        <div class="botonera-form">
+            <input class="boton-especial" type="reset" value="Borrar">
+            <input class="boton-especial" type="submit" value="Calcular">
+        </div>
+    </form>
+    {% if existeResultado %}
+        <div class="contenedor-resultado">
+            <h5>Resultado</h5>
+            <div class="contenedor-resultados-multiples">
+                <div class="resultados-multiples__elemento md">
+                    <h6>Raiz</h6>
+                    <div class="resultados-multiples__elemento__valor">
+                        <input class="" type="text" value={{raizResultado}}>
+                    </div>
+                </div>
+                <div class="resultados-multiples__elemento md">
+                    <h6>Error</h6>
+                    <div class="resultados-multiples__elemento__valor">
+                        <input class="" type="text" value={{errorResultado}}>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
+{% block informacion-tabla %}
+    <table class="tabla-raices">
+        <tr>
+            <th>n</th>
+            <th>x</th>
+            <th>r</th>
+            <th>f(r)</th>
+            <th>Error</th>
+        </tr>
+        {% for fila in tablaResultado %}
+            <tr>
+                {% for columna in fila %}
+                    <td>{{columna}}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
+{% block informacion-grafico %}
+    <img src="{% static '\img\grafico.png' %}">
+{% endblock %}
+{% block informacion-teoria %}
+    {% lorem 10 b random %}
+{% endblock %}

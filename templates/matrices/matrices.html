@@ -1,0 +1,118 @@
+{% extends 'inicio/inicio.html' %}
+{% load static %}
+{% block contenido %}
+    <div>
+        <div class="vista_matrices">
+            <h5>Matrices agregadas:</h5>
+            <div class="panel_matrices">
+                {% if matrices %}
+                    {% for nombre, datos in matrices.items %}
+                        <div class="matriz_vista">
+                            <p class="matriz_vista__nombre">{{nombre}}</p>
+                            <table>
+                                {% for fil in datos%}
+                                    <tr class="matriz_vista__fila">
+                                        {% for col in fil %}
+                                            <td class="matriz_vista__fila__columna">
+                                                {{col}}
+                                            </td>
+                                        {% endfor %}
+                                    </tr>
+                                {% endfor %}
+                            </table>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <h6 id="respuesta_no_matrices">No hay matrices...</h6>
+                {% endif %}
+            </div>
+            <form method="POST" action="{% url 'calcular_matrices' %}" class="calculos_matrices">
+                {% csrf_token %}
+                <label>Expresion:</label>
+                <input class="md" type="text" name="entradaExpresionCalculo" value="{{expresion}}">
+                <input class="boton-especial" type="submit" value="Calcular">
+            </form>
+            <div class="contenedor_agregar_matrices"> 
+                <label id="boton_agregar_matriz" for="boton_agregar_matriz_check">Aregar matriz</label>
+                <input id="boton_agregar_matriz_check" type="checkbox">
+                <div class="contenedor_registro_matrices">
+                    <form method="POST" action="{% url 'guardar_matrices' %}" id="form-evaluador" class="form_agregar_matriz">
+                        {% csrf_token %}
+                        <h5>Agregar Matriz:</h5>
+                        <div class="agregar_matriz">
+                            <label>Nombre matriz:</label>
+                            <input type="text" name="nombreMatriz">
+                            <label>Datos matriz:</label>
+                            <textarea name="datosMatriz"></textarea>
+                        </div>
+                        <div class="botonera-form">
+                            <input id="boton_guardar_matriz" class="boton-especial" type="submit" value="Guardar">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% if existeResultado %}
+        <div class="contenedor-resultado">
+            <h5>Resultado</h5>
+            {% if existeMatrizResultado %}
+                <div class="contenedor_matriz_vista">
+                    <p>{{expresionCalculo}} = <p> 
+                    <div class="matriz_vista">
+                        <table>
+                            {% for fil in matrizResultado %}
+                                <tr class="matriz_vista__fila">
+                                    {% for col in fil %}
+                                        <td class="matriz_vista__fila__columna">
+                                            {{col}}
+                                        </td>
+                                    {% endfor %}
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+            {% else %}
+                <div class="contenedor_matriz_vista">
+                    <p>{{expresionCalculo}} = {{resultadoUnitario}}<p>
+                </div>
+            {% endif %}
+        </div>
+    {% endif %}
+    {% if historial %}
+        <div class="seccion_historial">
+            <h5>Historial</h5>
+            {% for item in historial %}
+                {% for llave, datos in item.items %}
+                    {% if datos|length > 0 %}
+                        <div class="contenedor_historial_matriz">
+                            <p class="">{{llave}} : </p>
+                            <div class="matriz_vista">
+                                <table>
+                                    {% for fil in datos %}
+                                        <tr class="matriz_vista__fila">
+                                            {% for col in fil %}
+                                                <td class="matriz_vista__fila__columna">
+                                                    {{col}}
+                                                </td>
+                                            {% endfor %}
+                                        </tr>
+                                    {% endfor %}
+                                </table>
+                            </div>
+                        </div>
+                    {% else %}
+                        <p class="">{{llave}} = {{datos}}</p>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endblock %}
+{% block informacion-grafico %}
+    <img src="{% static '\img\grafico.png' %}">
+{% endblock %}
+{% block informacion-teoria %}
+    {% lorem 10 b random %}
+{% endblock %}

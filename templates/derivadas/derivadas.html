@@ -1,0 +1,24 @@
+{% extends 'inicio/inicio.html' %}
+{% load static %}
+{% block contenido %}
+    <div class="contenedor-cartas">
+        <div class="contenedor-cartas__carta">
+            <a href="{% url 'derivada_numerica' %}">
+                <span><i class=""></i></span>
+                <h6>Derivada Numerica</h6>
+                <div class="contenedor-cartas__carta__descripcion">
+                    <p>Calcula la derivada numerica de una funcion en el orden especificado</p>
+                </div>
+            </a>
+        </div>
+        <div class="contenedor-cartas__carta">
+            <a href="{% url 'derivada_simbolica' %}">
+                <span><i class=""></i></span>
+                <h6>Derivada Simbolica</h6>
+                <div class="contenedor-cartas__carta__descripcion">
+                    <p>Calcula la derivada simbolica de una funcion en el orden especificado</p>
+                </div>
+            </a>
+        </div>
+    </div>
+{% endblock %}

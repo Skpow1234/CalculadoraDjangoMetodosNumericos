@@ -1,0 +1,272 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Calcul8</title>
+        <!--Propio-->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">        
+        <link href="{% static 'css/style.css' %}" rel="stylesheet">
+        <script src="{% static 'js/Display.js' %}" type="text/javascript"></script>
+        <script src="{% static 'js/scripts.js' %}" type="text/javascript" defer></script>
+        <!--Bootstrap-->
+        <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" crossorigin="anonymous">
+        <script src="{% static 'js/bootstrap.min.js' %}" type="text/javascript"></script>
+        <script src="{% static 'js/popper.min.js' %}" type="text/javascript"></script>
+        <!--Iconos-->
+        <link href="{% static 'fontawesome-free-5.15.3-web/css/all.css' %}" rel="stylesheet">
+        <script defer src="{% static 'fontawesome-free-5.15.3-web/js/brands.js' %}"></script>
+        <script defer src="{% static 'fontawesome-free-5.15.3-web/js/solid.js' %}"></script>
+        <script defer src="{% static 'fontawesome-free-5.15.3-web/js/fontawesome.js' %}"></script>
+        <!--Fuentes-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <div id="contenedor-principal">
+            <div id="logo">
+                <div>
+                    <p>C</p>
+                </div>
+                <div>
+                    <p>A</p>
+                </div>
+                <div>
+                    <p>L</p>
+                </div>
+                <div>
+                    <p>C</p>
+                </div>
+            </div>
+            <nav id="menu-principal">
+                <label id="boton-menu" for="boton-menu-check"><i class="fas fa-bars"></i></label>
+                <input id="boton-menu-check" type="checkbox">
+                <ul id="menu-principal-horizontal" class="menu-horizontal">
+                    <li class="menu-horizontal__opcion"><a href="{% url 'inicio' %}">Inicio</a></li>
+                    <li class="menu-horizontal__opcion"><a href="{% url 'evaluador' %}">Evaluador</a></li>
+                    <li class="menu-horizontal__opcion">
+                        <a href="{% url 'conversion' %}">Conversion</a>
+                        <ul class="menu-horizontal__submenu">
+                            <li class="menu-horizontal__submenu__opcion"><a href="{% url 'conversion_binario' %}">Sistema Binario</a></li>
+                            <li class="menu-horizontal__submenu__opcion"><a href="{% url 'conversion_octal' %}">Sistema Octal</a></li>
+                            <li class="menu-horizontal__submenu__opcion"><a href="{% url 'conversion_decimal' %}">Sistema Decimal</a></li>
+                            <li class="menu-horizontal__submenu__opcion"><a href="{% url 'conversion_hexadecimal' %}">Sistema Hexadecimal</a></li>
+                            <li class="menu-horizontal__submenu__opcion"><a href="{% url 'conversion_ieee754' %}">Estandar IEEE754</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-horizontal__opcion">
+                        <a href="{% url 'raices' %}">Raices</a>
+                        <ul class="menu-horizontal__submenu">
+                            <li class="menu-horizontal__submenu__opcion"><a href="{% url 'biseccion' %}">Biseccion</a></li>
+                            <li class="menu-horizontal__submenu__opcion"><a href="{% url 'falsa_posicion' %}">Falsa Posicion</a></li>
+                            <li class="menu-horizontal__submenu__opcion"><a href="{% url 'newton_raphson' %}">Newton Raphson</a></li>
+                            <li class="menu-horizontal__submenu__opcion"><a href="{% url 'secante' %}">Secante</a></li>
+                            <li class="menu-horizontal__submenu__opcion"><a href="{% url 'polinomio' %}">Polinomio</a></li>
+                        </ul>    
+                    </li>
+                    <li class="menu-horizontal__opcion">
+                        <a href="{% url 'derivadas' %}">Derivadas</a>
+                        <ul class="menu-horizontal__submenu">
+                            <li class="menu-horizontal__submenu__opcion"><a href="{% url 'derivada_numerica' %}">Derivada numerica</a></li>
+                            <li class="menu-horizontal__submenu__opcion"><a href="{% url 'derivada_simbolica' %}">Derivada simbolica</a></li>
+                        </ul>    
+                    </li>
+                    <li class="menu-horizontal__opcion">
+                        <a href="{% url 'integrales' %}">Integrales</a>
+                        <ul class="menu-horizontal__submenu">
+                            <li class="menu-horizontal__submenu__opcion"><a href="{% url 'rectangulos' %}">Rectangulos</a></li>
+                            <li class="menu-horizontal__submenu__opcion"><a href="{% url 'trapecios' %}">Trapecios</a></li>
+                            <li class="menu-horizontal__submenu__opcion"><a href="{% url 'simpson1_3' %}">Simpson 1/3</a></li>
+                            <li class="menu-horizontal__submenu__opcion"><a href="{% url 'simpson3_8' %}">Simpson 3/8</a></li>
+                            <li class="menu-horizontal__submenu__opcion"><a href="{% url 'montecarlo' %}">Montecarlo</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-horizontal__opcion"><a href="{% url 'matrices' %}">Matrices</a></li>
+                    <li class="menu-horizontal__opcion"><a href="{% url 'graficador' %}">Graficador</a></li>
+                </ul>
+            </nav>
+            <section id="banner">
+    
+                <div class="slider">
+                    <ul>
+                        <li>
+                            <img src="https://www.lockheedmartin.com/content/dam/lockheed-martin/eo/photo/webt/webt-woman-in-math-lead.jpg.pc-adaptive.full.medium.jpeg">
+                        </li>
+                        <li>
+                            <img src="https://fondosmil.com/fondo/27569.jpg">
+                        </li>
+                        <li>
+                            <img src="https://img.mensxp.com/media/content/2021/Jun/Hyderabad-Physicist-Makes-History-By-Solving-161-YO-Unsolvable-Math-Problem-Worth-1Mn-dolloar-1400x653_60dad8a2d7b47.jpeg">
+                        </li>
+                    </ul>
+                </div>
+      
+                <!--
+                <div class="desarrolladores">
+                    <div class="desarrolladores__desarrolador">
+                        <img src="https://img.blogs.es/anexom/wp-content/uploads/2020/06/pestana-de-incognito-navegacion-oculta.jpg">
+                        <p>Samuel Martinez</p>
+                    </div>
+                    <div class="desarrolladores__desarrolador">
+                        <img src="https://img.blogs.es/anexom/wp-content/uploads/2020/06/pestana-de-incognito-navegacion-oculta.jpg">
+                        <p>Cristian Apraez</p>
+                    </div>
+                    <div class="desarrolladores__desarrolador">
+                        <img src="https://img.blogs.es/anexom/wp-content/uploads/2020/06/pestana-de-incognito-navegacion-oculta.jpg">
+                        <p>Roberto Salas</p>
+                    </div>
+                    <div class="desarrolladores__desarrolador">
+                        <img src="https://img.blogs.es/anexom/wp-content/uploads/2020/06/pestana-de-incognito-navegacion-oculta.jpg">
+                        <p>Juan Hurtado</p>
+                    </div>
+                    <div class="desarrolladores__desarrolador">
+                        <img src="https://img.blogs.es/anexom/wp-content/uploads/2020/06/pestana-de-incognito-navegacion-oculta.jpg">
+                        <p>Fernando Moreno</p>
+                    </div>
+                </div>
+                -->
+            </section>
+            <main id="contenido-principal">
+                <section id="contenido-principal__titulo">
+                   {% if paginaSecundaria %}
+                        <h1><a href="..\">{{paginaPrincipal}}</a></h1>
+                        <i class="fas fa-chevron-right"></i>
+                        <h2>{{paginaSecundaria}}</h2>
+                    {% else %}
+                        <h1>{{paginaPrincipal}}</h1>
+                   {% endif %}
+                </section>
+                <section id="contenido-principal__contenido">
+                    <div class="contenido">
+                        {% block contenido %}
+                            <div class="contenedor-cartas">
+                                <div class="contenedor-cartas__carta">
+                                    <a href="{% url 'evaluador' %}">
+                                        <span><i class="fas fa-search"></i></span>
+                                        <h6>Evaluador</h6>
+                                        <div class="contenedor-cartas__carta__descripcion">
+                                            <p>Evalua funciones en un punto determinado</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="contenedor-cartas__carta">
+                                    <a href="">
+                                        <span><i class="fas fa-balance-scale-left"></i></span>
+                                        <h6>Conversion</h6>
+                                        <div class="contenedor-cartas__carta__descripcion">
+                                            <p>Convierte entre sistemas numericos</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="contenedor-cartas__carta">
+                                    <a href="{% url 'raices' %}">
+                                        <span><i class="fas fa-square-root-alt"></i></span>
+                                        <h6>Raices</h6>
+                                        <div class="contenedor-cartas__carta__descripcion">
+                                            <p>Encuentra la(s) raiz(es) de funciones mediante diversos metodos</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="contenedor-cartas__carta">
+                                    <a href="{% url 'derivadas' %}">
+                                        <span><i class="fas fa-subscript"></i></span>
+                                        <h6>Derivadas</h6>
+                                        <div class="contenedor-cartas__carta__descripcion">
+                                            <p>Calcula la derivada de una funcion en el orden especificado</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="contenedor-cartas__carta">
+                                    <a href="{% url 'integrales' %}">
+                                        <span><i class="fas fa-superscript"></i></span>
+                                        <h6>Integrales</h6>
+                                        <div class="contenedor-cartas__carta__descripcion">
+                                            <p>Calcula la integral definida de una funcion en un intervalo por diversos metodos</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="contenedor-cartas__carta">
+                                    <a href="{% url 'matrices' %}">
+                                        <span><i class="fas fa-chart-area"></i></span>
+                                        <h6>Matrices</h6>
+                                        <div class="contenedor-cartas__carta__descripcion">
+                                            <p>Realiza operaciones con funciones</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="contenedor-cartas__carta">
+                                    <a href="{% url 'graficador' %}">
+                                        <span><i class="fas fa-chart-area"></i></span>
+                                        <h6>Graficador</h6>
+                                        <div class="contenedor-cartas__carta__descripcion">
+                                            <p>Grafica funciones</p>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        {% endblock %}
+                        {% if existeResultado %}
+                            <div class="contenedor-otros-resultados">
+                                {% if existeTabla %}
+                                    <a href="#informacion-tabla" title="Ver tabla">Tabla</a>
+                                    <div id="informacion-tabla" class="contenedor-contenido-emergente">
+                                        <div class="contenido-emergente">
+                                            <h1>Tabla</h1>
+                                            <div class="contenido-emergente__informacion">
+                                                {% block informacion-tabla %}
+
+                                                {% endblock %}
+                                            </div>
+                                            <a href="#" title="Cerrar"><i class="fas fa-chevron-down"></i></a>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                                {% if existeGrafico %}
+                                    <a href="#informacion-grafico" title="Ver grafico">Grafico</a>
+                                    <div id="informacion-grafico" class="contenedor-contenido-emergente">
+                                        <div class="contenido-emergente">
+                                            <h1>Grafico</h1>
+                                            <div class="contenido-emergente__informacion">
+                                                {% block informacion-grafico %}
+
+                                                {% endblock %}
+                                            </div>
+                                            <a href="#" title="Cerrar"><i class="fas fa-chevron-down"></i></a>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                                {% if existeTeoria %}
+                                    <a href="#informacion-teoria" title="Ver teoria">Teoria</a>
+                                    <div id="informacion-teoria" class="contenedor-contenido-emergente">
+                                        <div class="contenido-emergente">
+                                            <h1>Teoria</h1>
+                                            <div class="contenido-emergente__informacion">
+                                                {% block informacion-teoria %}
+
+                                                {% endblock %}
+                                            </div>
+                                            <a href="#" title="Cerrar"><i class="fas fa-chevron-down"></i></a>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            </div> 
+                        {% endif %}
+                    </div>
+                </section>
+            </main>
+            <footer id="pie-pagina">
+                @Metodos Numericos 2021
+                <nav id="menu-secundario">
+                    <ul class="menu-horizontal">
+                        <li class="menu-horizontal__opcion"><a href="{% url 'inicio' %}">Inicio</a></li>
+                        <li class="menu-horizontal__opcion"><a href="">Nosotros</a></li>
+                        <li class="menu-horizontal__opcion"><a href="https://www.usbcali.edu.co/" target="blank">Universidad</a></li>
+                    </ul>
+                </nav>
+            </footer>
+        </div>
+        <script defer src="{% static 'js/script_matrices.js' %}"></script>
+    </body>
+</html>
+
